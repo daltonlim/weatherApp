@@ -19,6 +19,13 @@ interface IState {
     value: string
 }
 
+const divStyle = {
+    display: 'flex',
+    //flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+};
+
 export default class App extends React.Component<{}, IState> {
     constructor(props: any) {
         super(props);
@@ -43,26 +50,12 @@ export default class App extends React.Component<{}, IState> {
             .then(data => this.setState({jsonData: data}));
     }
 
-    getData() {
-        const data = this.state.jsonData;
-        if (typeof data.main != 'undefined') {
-            var celcius = Math.round((data.main.temp - 273.15) * 10) / 10;
-            return (
-                <p>In {data.name},{data.sys.country} it is {celcius}°C with expected {data.weather[0].description}</p>
-            )
-        } else {
-            return (
-                <p>Invalid name specified</p>
-            )
-        }
-    }
-
     WeatherCard() {
         const data = this.state.jsonData;
         if (typeof data.main != 'undefined') {
             var celcius = Math.round((data.main.temp - 273.15) * 10) / 10;
             return (
-                <div>
+                <div >
                     <Card className="Card">
                         <CardContent>
                             <Typography className="Title" color="textSecondary">
@@ -71,7 +64,7 @@ export default class App extends React.Component<{}, IState> {
                             <Typography variant="headline" component="h2">
                                 {celcius}°C
                             </Typography>
-                            <WeatherIcon name="owm" iconId={data.weather[0].id} flip="horizontal" rotate="90" />
+                            <WeatherIcon name="owm" iconId={data.weather[0].id} flip="horizontal" rotate="90"/>
 
                             <Typography className="pos" color="textSecondary">
                                 {data.weather[0].description}
@@ -90,17 +83,21 @@ export default class App extends React.Component<{}, IState> {
 
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <FormControl className="formControl">
-                        <InputLabel htmlFor="name-simple">City</InputLabel>
-                        <Input id="name-simple" type="text" value={this.state.value} onChange={this.handleChange}/>
-                    </FormControl>
-                    <Button type="submit" value="Submit" aria-label="Submit" color="default"/>
-                </form>
-
-                {this.WeatherCard()}
-
+            <div style={divStyle}>
+                <div>
+                    <p> </p> {/*Create some space*/}
+                    <form onSubmit={this.handleSubmit} style={divStyle}>
+                        <FormControl className="formControl">
+                            <InputLabel htmlFor="name-simple">City</InputLabel>
+                            <Input id="name-simple" type="text" value={this.state.value} onChange={this.handleChange}/>
+                        </FormControl>
+                        <Button variant="outlined" type="submit" value="Submit"  size="small">
+                            Submit
+                        </Button>
+                    </form>
+                    <p> </p> {/*Create some space*/}
+                    {this.WeatherCard()}
+                </div>
             </div>
         );
     }
