@@ -7,7 +7,7 @@ export const Header: React.StatelessComponent<{}> = () => {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="display2" color="inherit">
-                        <Link style={{color: "white"}} to="/">Weather App</Link>
+                        <Link style={{color: "white"}} to="/">Weather Card</Link>
                      </Typography>
                 </Toolbar>
             </AppBar>

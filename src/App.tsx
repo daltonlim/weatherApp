@@ -21,10 +21,8 @@ interface IState {
 
 const divStyle = {
     display: 'flex',
-    //flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //fontSize :0
 };
 
 
@@ -56,21 +54,22 @@ export default class App extends React.Component<{}, IState> {
     WeatherCard() {
         const data = this.state.jsonData;
         if (typeof data.main != 'undefined') {
-            var celcius = Math.round((data.main.temp - 273.15) * 10) / 10;
+            var celcius = Math.round((data.main.temp - 273.15) * 10) / 10;// Round to 2 dp.
             return (
                 <div >
                     <Card className="Card" style={{minWidth: 275,}} >
                         <CardContent>
-                            <Typography className="Title" color="textSecondary" style={{fontSize: 14}} >
-                                {data.name},{data.sys.country}
+                            <Typography className="Title" color="textSecondary" style={{fontSize: 16}} >
+                                {data.name},{' ' + data.sys.country} <br />
+
+                                <Typography className="weather" color="inherit" style={{fontSize: 14}}  >
+                                    <WeatherIcon name="owm" iconId={data.weather[0].id} />
+                                    {' ' + data.weather[0].description}
+                                </Typography>
+
                             </Typography>
                             <Typography variant="headline" component="h2" style={{fontSize: 24}}>
                                 {celcius}°C
-                            </Typography>
-
-                            <Typography className="pos" color="textSecondary" style={{fontSize: 14}}>
-                                <WeatherIcon name="owm" iconId={data.weather[0].id} />
-                                  {' ' + data.weather[0].description}
                             </Typography>
 
                         </CardContent>
