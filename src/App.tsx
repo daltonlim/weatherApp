@@ -67,10 +67,10 @@ export default class App extends React.Component<{}, IState> {
                             <Typography variant="headline" component="h2" style={{fontSize: 24}}>
                                 {celcius}°C
                             </Typography>
-                            <WeatherIcon name="owm" iconId={data.weather[0].id} flip="horizontal" rotate="90" style={{fontSize: 14}}/>
 
-                            <Typography className="pos" color="textSecondary" style={{fontSize: 20}}>
-                                {data.weather[0].description}
+                            <Typography className="pos" color="textSecondary" style={{fontSize: 14}}>
+                                <WeatherIcon name="owm" iconId={data.weather[0].id} />
+                                  {' ' + data.weather[0].description}
                             </Typography>
 
                         </CardContent>
