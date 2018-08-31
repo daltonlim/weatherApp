@@ -23,8 +23,10 @@ const divStyle = {
     display: 'flex',
     //flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    //fontSize :0
 };
+
 
 export default class App extends React.Component<{}, IState> {
     constructor(props: any) {
@@ -33,6 +35,7 @@ export default class App extends React.Component<{}, IState> {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.updateApi();
     }
 
     handleChange(event: any) {
@@ -56,17 +59,17 @@ export default class App extends React.Component<{}, IState> {
             var celcius = Math.round((data.main.temp - 273.15) * 10) / 10;
             return (
                 <div >
-                    <Card className="Card">
+                    <Card className="Card" style={{minWidth: 275,}} >
                         <CardContent>
-                            <Typography className="Title" color="textSecondary">
+                            <Typography className="Title" color="textSecondary" style={{fontSize: 14}} >
                                 {data.name},{data.sys.country}
                             </Typography>
-                            <Typography variant="headline" component="h2">
+                            <Typography variant="headline" component="h2" style={{fontSize: 24}}>
                                 {celcius}°C
                             </Typography>
-                            <WeatherIcon name="owm" iconId={data.weather[0].id} flip="horizontal" rotate="90"/>
+                            <WeatherIcon name="owm" iconId={data.weather[0].id} flip="horizontal" rotate="90" style={{fontSize: 14}}/>
 
-                            <Typography className="pos" color="textSecondary">
+                            <Typography className="pos" color="textSecondary" style={{fontSize: 20}}>
                                 {data.weather[0].description}
                             </Typography>
 
@@ -86,12 +89,13 @@ export default class App extends React.Component<{}, IState> {
             <div style={divStyle}>
                 <div>
                     <p> </p> {/*Create some space*/}
+
                     <form onSubmit={this.handleSubmit} style={divStyle}>
                         <FormControl className="formControl">
-                            <InputLabel htmlFor="name-simple">City</InputLabel>
-                            <Input id="name-simple" type="text" value={this.state.value} onChange={this.handleChange}/>
+                            <InputLabel htmlFor="name-simple"  style={{fontSize: 14}}>City</InputLabel>
+                            <Input id="name-simple" type="text" value={this.state.value} onChange={this.handleChange} style={{fontSize: 14}}/>
                         </FormControl>
-                        <Button variant="outlined" type="submit" value="Submit"  size="small">
+                        <Button variant="outlined" type="submit" value="Submit"  size="medium" style={{fontSize: 12}}>
                             Submit
                         </Button>
                     </form>
