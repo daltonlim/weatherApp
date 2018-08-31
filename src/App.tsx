@@ -10,7 +10,7 @@ import Typography from "@material-ui/core/Typography/Typography";
 // @ts-ignore
 import WeatherIcon from 'react-icons-weather';
 
-const API = 'http://api.openweathermap.org/data/2.5/weather?q=';
+const API = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const APPIDPREFIX = '&appid=';
 const APPID = 'ece0d8b1e9f26bc9f8b45549d4585e47';
 
