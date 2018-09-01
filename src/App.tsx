@@ -87,8 +87,7 @@ export default class App extends React.Component<{}, IState> {
         return (
             <div style={divStyle}>
                 <div>
-                    <p> </p> {/*Create some space*/}
-
+                    <br/>
                     <form onSubmit={this.handleSubmit} style={divStyle}>
                         <FormControl className="formControl">
                             <InputLabel htmlFor="name-simple"  style={{fontSize: 14}}>City</InputLabel>
@@ -98,7 +97,7 @@ export default class App extends React.Component<{}, IState> {
                             Submit
                         </Button>
                     </form>
-                    <p> </p> {/*Create some space*/}
+                    <br/>
                     {this.WeatherCard()}
                 </div>
             </div>
